@@ -2,7 +2,7 @@ package structural;
 
 import java.io.*;
 
-public class StreamAdapter {
+public class JavaAdapterExample {
     public static void main(String[] args) {
         try {
             // Byte stream (Adaptee)

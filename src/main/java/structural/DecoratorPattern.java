@@ -1,11 +1,11 @@
 package structural;
 
-interface Coffee {
+interface ICoffee {
     String getDescription();
     double cost();
 }
 
-class SimpleCoffee implements Coffee {
+class SimpleICoffee implements ICoffee {
     public String getDescription() {
         return "Simple coffee";
     }
@@ -14,10 +14,10 @@ class SimpleCoffee implements Coffee {
     }
 }
 
-abstract class CoffeeDecorator implements Coffee {
-    protected Coffee decoratedCoffee;
+abstract class CoffeeDecorator implements ICoffee {
+    protected ICoffee decoratedCoffee;
 
-    public CoffeeDecorator(Coffee decoratedCoffee) {
+    public CoffeeDecorator(ICoffee decoratedCoffee) {
         this.decoratedCoffee = decoratedCoffee;
     }
 
@@ -31,7 +31,7 @@ abstract class CoffeeDecorator implements Coffee {
 }
 
 class MilkDecorator extends CoffeeDecorator {
-    public MilkDecorator(Coffee decoratedCoffee) {
+    public MilkDecorator(ICoffee decoratedCoffee) {
         super(decoratedCoffee);
     }
 
@@ -45,7 +45,7 @@ class MilkDecorator extends CoffeeDecorator {
 }
 
 class CollagenDecorator extends CoffeeDecorator {
-    public CollagenDecorator(Coffee decoratedCoffee) {
+    public CollagenDecorator(ICoffee decoratedCoffee) {
         super(decoratedCoffee);
     }
 
@@ -63,7 +63,7 @@ class CollagenDecorator extends CoffeeDecorator {
 
 public class DecoratorPattern {
     public static void main(String[] args) {
-        SimpleCoffee simpleCoffee = new SimpleCoffee();
+        SimpleICoffee simpleCoffee = new SimpleICoffee();
 
         CoffeeDecorator milkCoffee = new MilkDecorator(simpleCoffee);
         System.out.println("cost of milk coffee "+ milkCoffee.cost());
@@ -73,9 +73,6 @@ public class DecoratorPattern {
 
         MilkDecorator milkCollagenCoffee = new MilkDecorator(collagenCoffee);
         System.out.println("cost of collagen , milk coffee "+ milkCollagenCoffee.cost());
-
-
-
 
     }
 }
