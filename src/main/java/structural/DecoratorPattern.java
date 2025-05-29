@@ -2,6 +2,7 @@ package structural;
 
 interface ICoffee {
     String getDescription();
+
     double cost();
 }
 
@@ -9,6 +10,7 @@ class SimpleICoffee implements ICoffee {
     public String getDescription() {
         return "Simple coffee";
     }
+
     public double cost() {
         return 1.0;
     }
@@ -58,21 +60,18 @@ class CollagenDecorator extends CoffeeDecorator {
     }
 }
 
-
-
-
 public class DecoratorPattern {
     public static void main(String[] args) {
         SimpleICoffee simpleCoffee = new SimpleICoffee();
 
         CoffeeDecorator milkCoffee = new MilkDecorator(simpleCoffee);
-        System.out.println("cost of milk coffee "+ milkCoffee.cost());
+        System.out.println("cost of milk coffee " + milkCoffee.cost());
 
-        CollagenDecorator collagenCoffee = new CollagenDecorator(simpleCoffee);
-        System.out.println("cost of collagen coffee "+ collagenCoffee.cost());
+        CoffeeDecorator collagenCoffee = new CollagenDecorator(simpleCoffee);
+        System.out.println("cost of collagen coffee " + collagenCoffee.cost());
 
-        MilkDecorator milkCollagenCoffee = new MilkDecorator(collagenCoffee);
-        System.out.println("cost of collagen , milk coffee "+ milkCollagenCoffee.cost());
+        CoffeeDecorator milkCollagenCoffee = new MilkDecorator(collagenCoffee);
+        System.out.println("cost of collagen , milk coffee " + milkCollagenCoffee.cost());
 
     }
 }
