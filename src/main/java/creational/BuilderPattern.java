@@ -1,56 +1,53 @@
 package creational;
 
-class Burger{
-    public String bun;
-    public String patty;
+class Car {
+    String engine;
+    String color;
+    int seats;
 
-    public String cheese;
-
-    public void setBun(String b)
-    {
-        this.bun = b;
-    }
-    public void setCheese(String s)
-    {
-        this.cheese = s;
-    }
-    public void setPatty(String p)
-    {
-        this.patty = p;
+    private Car(String engine, String color, int seats) {
+        this.engine = engine;
+        this.color = color;
+        this.seats = seats;
     }
 
     @Override
-    public String toString(){
-        return bun+"-"+cheese+"-"+patty;
+    public String toString() {
+        return engine + '-' + color + "-" + seats;
     }
 
-}
-
-class BurgerBuilder{
-    Burger burger;
-    public BurgerBuilder(){
-        burger = new Burger();
+    public static CarBuilder builder() {
+        return new CarBuilder();
     }
 
-    public Burger build()
-    {
-        return burger;
-    }
+    public static class CarBuilder {
 
-    public BurgerBuilder addBun(String b)
-    {
-        this.burger.bun= b;
-        return this;
-    }
-    public BurgerBuilder addCheese(String s)
-    {
-        this.burger.cheese= s;
-        return this;
-    }
-    public BurgerBuilder addPatty(String p)
-    {
-        this.burger.patty= p;
-        return this;
+        String engine;
+        String color;
+        int seats;
+
+        CarBuilder() {
+        }
+
+        public Car build() {
+            return new Car(engine, color, seats);
+        }
+
+        public CarBuilder engine(String engineType) {
+            this.engine = engineType;
+            return this;
+        }
+
+        public CarBuilder color(String color) {
+            this.color = color;
+            return this;
+        }
+
+        public CarBuilder seats(int seats) {
+            this.seats = seats;
+            return this;
+        }
+
     }
 
 }
@@ -58,20 +55,9 @@ class BurgerBuilder{
 public class BuilderPattern {
 
     public static void main(String[] args) {
-        BurgerBuilder bb = new BurgerBuilder();
-        //large , chicken, cheese
-        Burger burger  = bb.addCheese("cheese")
-                .addBun("large")
-                .addPatty("chicken")
-                .build();
-        System.out.println(burger);
+        Car car = Car.builder().color("red").engine("diesel").seats(4).build();
 
-        Burger burger1  = bb.addCheese("nocheese")
-                .addBun("small")
-                .addPatty("beef")
-                .build();
-        System.out.println(burger1);
+        System.out.println(car);
 
     }
 }
-

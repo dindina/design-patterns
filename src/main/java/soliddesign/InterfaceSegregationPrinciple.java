@@ -63,6 +63,8 @@ class RobotWorker1 implements Workable {
 }
 public class InterfaceSegregationPrinciple {
 
+    //Clients should not be forced to depend upon interfaces that they do not use.
+
     /*Violating the Interface Segregation Principle (ISP) can lead to several problems in your software design.
     Here's what typically happens:
     Fat Interfaces and Unused Methods:

@@ -30,6 +30,9 @@ class Square extends Rectanglee {
         super.setHeight(height); // Square's width and height must be equal
     }
 }
+/*
+ * Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.
+ */
 
 public class LiskovSubstitutionViolated {
     public static void main(String[] args) {

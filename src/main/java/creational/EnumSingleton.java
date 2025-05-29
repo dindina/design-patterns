@@ -1,27 +1,26 @@
 package creational;
+enum Singleton {
+    instance;
 
-enum SingletonEnum {
+private String config;
 
-    INSTANCE;
-    private String dbURL = "jdbc://localhost:4040";
-    private int connections = 10;
+private Singleton(){
 
-    public String getDbURL() {
-        return dbURL;
-    }
+    config = System.getProperty("config", null);
+    System.out.println("in init " + config);
+}
 
-    public int getConnections() {
-        return connections;
-    }
+public String getConfig(){
+    return this.config;
+
+
+}
 }
 
 public class EnumSingleton{
-
     public static void main(String[] args) {
-        System.out.println(SingletonEnum.INSTANCE.getConnections());
-        System.out.println(SingletonEnum.INSTANCE.getDbURL());
+        Singleton instance = Singleton.instance;
+        System.out.println(instance.getConfig());
 
     }
 }
-
-
